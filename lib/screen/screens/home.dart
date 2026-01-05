@@ -140,7 +140,7 @@ class _HomeState extends State<Home> {
         'Vegetable Stir Fry',
         'Chicken Soup',
       ];
-
+//dinner images
   List<String> get dinnerImages => [
         'images/d1.png',
         'images/d2.png',
