@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "540709013117",
+    "project_id": "nutriquest-41ee8",
+    "storage_bucket": "nutriquest-41ee8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540709013117:android:735f387f8dd8829c4bd314",
+        "android_client_info": {
+          "package_name": "com.example.recipe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnakovv_9mMqVj0TakKbOk7xa1AgjIai8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
