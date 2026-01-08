@@ -13,7 +13,7 @@ import 'package:recipe/model/meal.dart';
 import 'package:recipe/screen/categorydata/detailed_meal_consumed.dart';
 import 'package:recipe/screen/categorydata/edit_meals.dart';
 
-import 'package:recipe/screen/consent/colors.dart';
+import 'package:recipe/screen/utiles/consts/colors.dart';
 
 class Statsdata extends StatefulWidget {
   Statsdata({
@@ -34,12 +34,20 @@ class _StatsdataState extends State<Statsdata> {
     "Tap for more"
   ]; 
 
-  double getCaloriesFromMeal(Meal meal) =>
-      getCarbCalories(meal) + getProteinCalories(meal) + getFatCalories(meal);
-  double getCarbCalories(Meal meal) => 4 * meal.carbs / 1000;
-  double getProteinCalories(Meal meal) => 4 * meal.protein / 1000;
-  double getFatCalories(Meal meal) => 9 * meal.fats / 1000;
-
+  // double getCaloriesFromMeal(Meal meal) =>
+  //     getCarbCalories(meal) + getProteinCalories(meal) + getFatCalories(meal);
+  // double getCarbCalories(Meal meal) => 4 * meal.carbs *1000/ 1000;
+  // double getProteinCalories(Meal meal) => 4 * meal.protein*1000 / 1000;
+  // double getFatCalories(Meal meal) => 9 * meal.fats*1000 / 1000;
+double getCarbCalories(Meal meal) => 4 * meal.carbs;
+double getProteinCalories(Meal meal) => 4 * meal.protein;
+double getFatCalories(Meal meal) => 9 * meal.fats;
+//to get total calories 
+double getTotalCalories(Meal meal) {
+  return getCarbCalories(meal) +
+         getProteinCalories(meal) +
+         getFatCalories(meal);
+}
   Meal getDefaultMeal() => Meal(
         name: '',
         detail: '',
@@ -185,9 +193,9 @@ class _StatsdataState extends State<Statsdata> {
                         flex: 10,
                         child: IntakeContainer(
                           nowTime: widget.nowTime,
-                          lunchTotal: getCaloriesFromMeal(lunch),
-                          dinnerTotal: getCaloriesFromMeal(dinner),
-                          breakfastTotal: getCaloriesFromMeal(breakfast),
+                          lunchTotal: getTotalCalories(lunch),
+                          dinnerTotal: getTotalCalories(dinner),
+                          breakfastTotal: getTotalCalories(breakfast),
                         ),
                       ),
                       Spacer(
@@ -198,9 +206,9 @@ class _StatsdataState extends State<Statsdata> {
                         flex: 10,
                         child: BurnContainer(
                             nowTime: widget.nowTime,
-                            lunchTotal: getCaloriesFromMeal(lunch),
-                            dinnerTotal: getCaloriesFromMeal(dinner),
-                            breakfastTotal: getCaloriesFromMeal(breakfast)),
+                            lunchTotal: getTotalCalories(lunch),
+                            dinnerTotal: getTotalCalories(dinner),
+                            breakfastTotal: getTotalCalories(breakfast)),
                       ),
                     ],
                   ),
@@ -220,7 +228,7 @@ class _StatsdataState extends State<Statsdata> {
                 return StatsContainer(
                     fatsTotal: getFatCalories(currentMeal),
                     carbsTotal: getCarbCalories(currentMeal),
-                    allTotal: getCaloriesFromMeal(currentMeal));
+                    allTotal: getTotalCalories(currentMeal));
               }),
               SizedBox(
                 height: 10,
@@ -674,86 +682,84 @@ class StatsContainer extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Row(
+                  child: Column(
                     children: [
-                      Container(
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Total",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
-                                ),
-                                SizedBox(
-                                  width: 100,
-                                ),
-                                Text(
-                                  allTotal.toStringAsFixed(2),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
-                                ),
-                                Text(
-                                  " /",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
-                                ),
-                                Text(
-                                  "${allTotal.toStringAsFixed(2)}",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
-                                ),
-                                Text(
-                                  " kcal",
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            if (allTotal > 2700)
-                              InkWell(
-                                onTap: () {},
-                                child: RotatedBox(
-                                  quarterTurns: 0,
-                                  child: LinearPercentIndicator(
-                                    width: 200,
-                                    animation: true,
-                                    lineHeight: 10,
-                                    animationDuration: 2500,
-                                    percent: allTotal.toDouble() / 12414.6,
-                                    barRadius: Radius.circular(3),
-                                    progressColor: Colors.red,
-                                    padding: EdgeInsets.zero,
-                                    backgroundColor:
-                                        Colors.blue.withOpacity(0.4),
-                                  ),
-                                ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Total",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
+                          ),
+                        
+                          Row(mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                allTotal.toStringAsFixed(2),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
                               ),
-                            if (allTotal < 2700)
-                              RotatedBox(
-                                quarterTurns: 0,
-                                child: LinearPercentIndicator(
-                                  width: 200,
-                                  animation: true,
-                                  lineHeight: 6,
-                                  animationDuration: 2500,
-                                  percent: allTotal.toDouble() / 12414.6,
-                                  barRadius: Radius.circular(3),
-                                  progressColor: Colors.blue,
-                                  padding: EdgeInsets.zero,
-                                  backgroundColor: Colors.blue.withOpacity(0.4),
-                                ),
+                              Text(
+                                " /",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
                               ),
-                          ],
-                        ),
+                              Text(
+                                "${allTotal.toStringAsFixed(2)}",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
+                              Text(
+                                " kcal",
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          ),
+                       
+                        ],
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      if (allTotal > 2700)
+                        InkWell(
+                          onTap: () {},
+                          child: RotatedBox(
+                            quarterTurns: 0,
+                            child: LinearPercentIndicator(
+                              width: 265,
+                              animation: true,
+                              lineHeight: 10,
+                              animationDuration: 2500,
+                              percent: allTotal.toDouble() / 12414.6,
+                              barRadius: Radius.circular(3),
+                              progressColor: Colors.red,
+                              padding: EdgeInsets.zero,
+                              backgroundColor:
+                                  Colors.blue.withOpacity(0.2),
+                            ),
+                          ),
+                        ),
+                      if (allTotal < 2700)
+                        RotatedBox(
+                          quarterTurns: 0,
+                          child: LinearPercentIndicator(
+                              width: 265,
+                            animation: true,
+                            lineHeight: 6,
+                            animationDuration: 2500,
+                            percent: allTotal.toDouble() / 12414.6,
+                            barRadius: Radius.circular(3),
+                            progressColor: Colors.blue,
+                            padding: EdgeInsets.zero,
+                            backgroundColor: Colors.blue.withOpacity(0.2),
+                          ),
+                        ),
                     ],
                   ),
                 ),

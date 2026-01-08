@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe/screen/categorydata/detailed_meal_consumed.dart';
-import 'package:recipe/screen/consent/colors.dart';
+import 'package:recipe/screen/utiles/consts/colors.dart';
 
 class ValueIntaked extends StatelessWidget {
   const ValueIntaked({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/screen/consent/colors.dart';
+import 'package:recipe/screen/utiles/consts/colors.dart';
 import 'package:recipe/screen/screens/home.dart';
 
 // ignore: must_be_immutable

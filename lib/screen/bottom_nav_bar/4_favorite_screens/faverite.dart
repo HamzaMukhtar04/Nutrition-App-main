@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'package:recipe/screen/utiles/consts/colors.dart';
+import 'package:recipe/screen/bottom_nav_bar/4_favorite_screens/provider/favorite_provider.dart';
+import 'package:recipe/screen/sidebar_screens/sidebar.dart';
+
+class favorite extends StatelessWidget {
+  const favorite({super.key});
+
+  get font => null;
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = FavoriteProvider.of(context);
+    final words = provider.words;
+    return Scaffold(
+      drawer: Navbar(),
+      appBar: AppBar(
+        centerTitle: true,
+           iconTheme: const IconThemeData(
+      color: Colors.white, 
+    ),
+        title: Text("Your Favorites",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.w600),),
+       
+        backgroundColor: maincolor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+      ),
+      backgroundColor: background,
+      body: ListView.builder(
+        itemCount: words.length,
+        itemBuilder: (context, index) {
+          final word = words[index];
+          return ListTile(
+            title: Text(word),
+            trailing: IconButton(
+              onPressed: () {
+                provider.toggleFavorite(word);
+              },
+              icon: provider.isExist(word)
+                  ? const Icon(Icons.favorite, color: Colors.red)
+                  : const Icon(Icons.favorite_border),
+            ),
+            onTap: () {},
+          );
+        },
+      ),
+    );
+  }
+}

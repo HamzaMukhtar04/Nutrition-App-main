@@ -1,3 +1,13 @@
 {
-  "java.configuration.updateBuildConfiguration": "interactive"
+    "editor.quickSuggestions": {
+        "comments": "off",
+        "strings": "off",
+        "other": "off"
+    },
+    
+    "[dart]": {
+        "editor.defaultFormatter": "Dart-Code.dart-code",
+        "editor.formatOnSave": true
+     }
+    
 }

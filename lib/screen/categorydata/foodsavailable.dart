@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:recipe/screen/categorydata/detailed_meal_consumed.dart';
 import 'package:recipe/screen/categorydata/edit_meals.dart';
-import 'package:recipe/screen/consent/colors.dart';
+import 'package:recipe/screen/utiles/consts/colors.dart';
 
 class Getfood extends StatelessWidget {
   Getfood({super.key, required this.documentId});

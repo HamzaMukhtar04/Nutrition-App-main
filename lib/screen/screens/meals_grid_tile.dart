@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe/model/meal.dart';
-import 'package:recipe/screen/consent/colors.dart';
-import 'package:recipe/screen/fav/provider/favorite_provider.dart';
+import 'package:recipe/screen/utiles/consts/colors.dart';
+import 'package:recipe/screen/bottom_nav_bar/4_favorite_screens/provider/favorite_provider.dart';
 import 'package:recipe/screen/recipes/lunch/lunch_pizza.dart';
 import 'package:recipe/screen/screens/detail_screen.dart';
 

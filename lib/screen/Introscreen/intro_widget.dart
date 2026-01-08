@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/screen/consent/navigation.dart';
+import 'package:hive/hive.dart';
+import 'package:recipe/screen/auth_screens/auth_gate/auth_gate.dart';
+import 'package:recipe/screen/bottom_nav_bar/bottom_navigation_bar.dart';
 
 class IntroWidget extends StatelessWidget {
   const IntroWidget({
@@ -76,9 +78,11 @@ class IntroWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: ((context) => Navigation())));
+                            onPressed: () async {
+                               final box = Hive.box('mybox');
+  await box.put('isFirstTime', false);
+                              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                  builder: ((context) => AuthGate())));
                             },
                             child: const Text(
                               'Skip Now',
@@ -104,9 +108,12 @@ class IntroWidget extends StatelessWidget {
                           color: hexToColor(color),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8)),
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: ((context) => Navigation())));
+                          onPressed: () async{
+                          final box = Hive.box('mybox');
+  await box.put('isFirstTime', false);
+
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(builder: (context) => const AuthGate()));
                           },
                           child: const Text('Get Started',
                               style: TextStyle(color: Colors.white)),

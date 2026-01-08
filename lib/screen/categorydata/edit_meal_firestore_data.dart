@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recipe/screen/consent/colors.dart';
-import 'package:recipe/screen/consent/navigation.dart';
+import 'package:recipe/screen/utiles/consts/colors.dart';
+import 'package:recipe/screen/bottom_nav_bar/bottom_navigation_bar.dart';
 
 // ignore: must_be_immutable
 class Getmeals extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe/screen/categorydata/edit_meal_firestore_data.dart';
-import 'package:recipe/screen/consent/colors.dart';
+import 'package:recipe/screen/utiles/consts/colors.dart';
 
 class EditMeals extends StatefulWidget {
   const EditMeals({super.key});

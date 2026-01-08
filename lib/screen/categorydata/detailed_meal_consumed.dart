@@ -6,7 +6,7 @@ import 'package:recipe/model/meal-consumed.dart';
 
 
 import 'package:recipe/screen/categorydata/foodsavailable.dart';
-import 'package:recipe/screen/consent/colors.dart';
+import 'package:recipe/screen/utiles/consts/colors.dart';
 import 'package:intl/intl.dart';
 
 class Detailed_meal_consumed extends StatefulWidget {
@@ -50,6 +50,7 @@ class _Detailed_meal_consumedState extends State<Detailed_meal_consumed> {
     String formattedDate = formatter.format(now);
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: maincolor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

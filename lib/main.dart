@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe/screen/fav/provider/favorite_provider.dart';
-import 'package:recipe/screen/logins/splash.dart';
+import 'package:recipe/screen/auth_screens/splash.dart';
+import 'package:recipe/screen/bottom_nav_bar/4_favorite_screens/provider/favorite_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:recipe/screen/chatbot/chatbot_screen.dart'; // ✅ Import chatbot screen
+import 'package:recipe/screen/sidebar_screens/chatbot/chatbot_screen.dart'; // ✅ Import chatbot screen
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
